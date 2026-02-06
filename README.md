@@ -20,13 +20,13 @@ Responsiblities
 - Host SErver     -> game orchestration and authoritative state
 - WebSocket layer -> real-time synchronization
 
--Component                    -System Design
----------------------------------------------------
--Client_Bot                   -Interface Layer / Client Node
--Server_Bot                   -Authoritative Backend Service
--WebSocket package            -Communication Protocol
--Game.py base class           -Plugin Architecute
--Channel Commands             -Routing Layer
+Component                    |System Design
+-----------------------------|---------------------
+Client_Bot                   |Interface Layer / Client Node
+Server_Bot                   |Authoritative Backend Service
+WebSocket package            |Communication Protocol
+Game.py base class           |Plugin Architecute
+Channel Commands             |Routing Layer
 
 DESIGN DECISIONS
 ----------------
