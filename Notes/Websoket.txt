@@ -1,0 +1,25 @@
+## Websocket Flow ################################
+ Host_Bot (Server): 
+    -MANGAES GAME STATES AND ROUTES MESSAGES BETWEEN CLIENT BOTS and user.
+    -Each client bot connects to a server bot.
+    -THE ARCADE BOT HANDLES sending updates, MEMBER COMMANDS, or 
+        actions TO SPECIFIC CLIENTS.
+
+ Game_Bots (Clients): 
+    -They handle their specialized logic but rely on the server bot for 
+        session management and communication between memebers.
+
+## Websocket Server ################################
+ Host_Bot
+    -Coordinates games.
+    -Manages player displays and invites.
+    -Relays messages between game bots and players.
+
+## Websocket Client ################################
+ Game_Bot
+    -Handle individual game (libraries) logic (e.g., Guess My Number, Battleship, [board games]).
+    -Respond to commands or requests sent from the arcade bot.
+    -Communicate game results or updates back to the arcade bot.
+
+
+** BUGS *****************************************
