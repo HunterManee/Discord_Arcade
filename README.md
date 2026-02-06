@@ -3,18 +3,6 @@ SYSTEM ARCHITECTURE OVERVIEW
 Discord Arcade uses a distrubuted bot architecture consisting of a Host Server and
 Game Client componetns communicating through a WEbSocket-based messaging layer.
 
-High-level flow:
-Discord Users
-     |
-     V
-Websocket Communication Layer
-     |
-     V
-Host Server Bot
-     |
-     V
-Game Logic + Session Management
-
 Responsiblities
 - Client Bot      -> interaction handling + UI ayer
 - Host Server     -> game orchestration and authoritative state
