@@ -1,10 +1,10 @@
 SYSTEM ARCHITECTURE OVERVIEW
 ----------------------------
-Discord Arcade uses a distrubuted bot architecture consisting of a Host Server and
-Game Client componetns communicating through a WEbSocket-based messaging layer.
+Discord Arcade is a modular multiplayer platform built on Discord that explores
+real-time system design through a distributed client/server architecture.
 
-Responsiblities
-- Client Bot      -> interaction handling + UI ayer
+Core Responsiblities
+- Client Bot      -> interaction handling + interface layer
 - Host Server     -> game orchestration and authoritative state
 - WebSocket layer -> real-time synchronization
 
@@ -13,59 +13,60 @@ Component                    |System Design
 Client_Bot                   |Interface Layer / Client Node
 Server_Bot                   |Authoritative Backend Service
 WebSocket package            |Communication Protocol
-Game.py base class           |Plugin Architecute
+Game.py base class           |Plugin Architecute / Extensible Module System
 Channel Commands             |Routing Layer
 
 DESIGN DECISIONS
 ----------------
 Cient/Server Separation
 The project separates client interaction from server-side logic to:
-- maintain clean responsibility boundaries
-- allow scalable game management
-- simulate real backend service patterns
+- Maintain clean responsibility boundaries
+- Allow scalable game management
+- Mirror patterns commonly used in real-world backend systems
 
 Modular Game Architecture
 Games inherit from a base structure to:
-- ensure consistent intergaces
-- reduce duplication
-- allow easy extension
+- Enforce consistent interfaces across game implementations
+- Reduce duplication
+- Allow easy extension
 
 Channel-Based Command Routing
-Different channel contexts allow tailored interation flows without tightly coupling logic
-to Discord event handlers.
+Different channel contexts allow tailored interation flows without 
+tightly coupling logic to Discord event handlers.
 
 MESSAGE FLOW
 ------------
 1. User issues command through Discord.
-2. Client Bot processes input and forwards structed message.
-3. WebSocket layer transmits event to Host Server.
-4. Host Server updates game state.
-5. Server broadcasts update to connected clients.
-6. Client Bots render updated game state.
+2. Client Bot transforms user input into structured events and
+   forwards them to the Host Server.
+4. WebSocket layer transmits event to Host Server.
+5. Host Server updates game state.
+6. Server broadcasts update to connected clients.
+7. Client Bots render updated game state.
 
 ENGINEERING CHALLENGES
 ----------------------
 Real-Time State Synchronization
-Maintaining consistent game state acroos multiple users required implimenting event-
-basewd updates via WebSockets.
+Maintaining consistent game state across multiple users required implementing event-
+based updates via WebSockets.
 
 Session Management
-Mapping users and channels to active game instances introduced complexity around
-lifecycle managment and clearnup logic.
+Mapping users and channels to active game instances introduced lifecycle and
+synchronization challenges
 
 Command Routing
-Digerent Discord contexts required a structured command hierachy to prevvent tightly
+Different Discord contexts required a structured command hierachy to prevent tightly
 coupled logic
 
 SYSTEM DESIGN PERSPECTIVE
 -------------------------
-Discord Arcade Models a simplifed distributed system:
+Discord Arcade conceptually models a simplified distributed system:
 - Clients act as interactionnodes handling user input.
 - The Host Server maintains authoritative game states.
 - WebSocket messaging enables real-time propagation.
 - Game modules operate as pluggable services within the system.
 
 This design mirrors patterns used in:
-- multiplayer game servers
-- event-driven backend systems.
-- real-time collaboration platforms.
+- Multiplayer game servers
+- Event-driven backend systems.
+- Real-time collaboration platforms.
